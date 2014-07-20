@@ -16,7 +16,7 @@ class Pattern {
 
 	public static function validate ($input) {
 		$value = $input->val();
-		$attr = preg_quote($input->attr('pattern'), '/');
+		$attr = $input->attr('pattern');
 
 		return (empty($attr) || empty($value) || filter_var($value, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => "/^($attr)$/")))) ? true : sprintf(static::$error_message, $attr);
 	}
